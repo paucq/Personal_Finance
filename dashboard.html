@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard | Personal Finance</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto+Mono:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              app: {
+                bg: '#f4f7f5',
+                surface: '#ffffff',
+                text: '#1d2a24',
+                muted: '#5d6e66',
+                border: '#d7e0db',
+                primary: '#1e7a4d',
+                primaryStrong: '#155f3b',
+                positive: '#2e9d5b',
+                negative: '#c63d2f',
+                warning: '#d08700',
+                info: '#2b6cb0'
+              }
+            },
+            fontFamily: {
+              sans: ['Poppins', 'sans-serif'],
+              mono: ['Roboto Mono', 'monospace']
+            },
+            boxShadow: {
+              card: '0 6px 20px rgba(17, 34, 25, 0.08)'
+            }
+          }
+        }
+      };
+    </script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="bg-app-bg text-app-text">
+    <div class="app-bg min-h-screen">
+      <header class="border-b border-app-border/70 bg-app-surface/90 backdrop-blur-sm">
+        <div class="mx-auto w-full max-w-7xl px-4 py-4 md:px-6">
+          <div class="flex flex-wrap items-center justify-between gap-4">
+            <div>
+              <p class="text-xs font-medium uppercase tracking-[0.24em] text-app-muted">Personal Finance</p>
+              <h1 class="text-xl font-semibold md:text-2xl">Dashboard Financiero</h1>
+            </div>
+            <nav class="flex flex-wrap gap-2 text-sm">
+              <a class="nav-link is-active" href="dashboard.html">Dashboard</a>
+              <a class="nav-link" href="transacciones.html">Transacciones</a>
+              <a class="nav-link" href="presupuestos.html">Presupuestos</a>
+            </nav>
+          </div>
+        </div>
+      </header>
+
+      <main class="mx-auto w-full max-w-7xl px-4 py-6 md:px-6 md:py-8">
+        <section class="grid gap-4 md:grid-cols-3">
+          <article class="rounded-2xl border border-app-border bg-app-surface p-5 shadow-card">
+            <p class="text-sm text-app-muted">Saldo Total</p>
+            <p class="mt-3 font-mono text-3xl font-bold text-app-positive">$ 1.950.000</p>
+            <p class="mt-2 text-xs text-app-muted">Actualizado hace 1 minuto</p>
+          </article>
+          <article class="rounded-2xl border border-app-border bg-app-surface p-5 shadow-card">
+            <p class="text-sm text-app-muted">Ingresos (Mes)</p>
+            <p class="mt-3 font-mono text-3xl font-bold text-app-info">$ 4.500.000</p>
+            <p class="mt-2 text-xs text-app-muted">8 movimientos registrados</p>
+          </article>
+          <article class="rounded-2xl border border-app-border bg-app-surface p-5 shadow-card">
+            <p class="text-sm text-app-muted">Gastos (Mes)</p>
+            <p class="mt-3 font-mono text-3xl font-bold text-app-negative">$ 2.550.000</p>
+            <p class="mt-2 text-xs text-app-muted">14 movimientos registrados</p>
+          </article>
+        </section>
+
+        <section class="mt-6 grid gap-6 xl:grid-cols-[1.1fr_0.9fr]">
+          <article class="rounded-2xl border border-app-border bg-app-surface p-5 shadow-card md:p-6">
+            <div class="flex items-center justify-between gap-4">
+              <div>
+                <h2 class="text-lg font-semibold md:text-xl">Resumen Mensual</h2>
+                <p class="text-sm text-app-muted">Visualizacion placeholder para Recharts en fase 2</p>
+              </div>
+              <span class="rounded-full bg-app-info/10 px-3 py-1 text-xs font-semibold text-app-info">Marzo 2026</span>
+            </div>
+            <div class="mt-5 grid gap-4 md:grid-cols-2">
+              <div class="chart-placeholder rounded-2xl border border-app-border p-4">
+                <p class="text-sm font-medium">Gastos por Etiqueta</p>
+                <div class="mt-4 h-48 rounded-xl bg-gradient-to-br from-app-info/15 via-app-primary/10 to-app-warning/15"></div>
+              </div>
+              <div class="chart-placeholder rounded-2xl border border-app-border p-4">
+                <p class="text-sm font-medium">Tendencia Semanal</p>
+                <div class="mt-4 h-48 rounded-xl bg-gradient-to-br from-app-positive/15 via-app-info/10 to-app-surface"></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="rounded-2xl border border-app-border bg-app-surface p-5 shadow-card md:p-6">
+            <div class="flex items-center justify-between">
+              <h2 class="text-lg font-semibold md:text-xl">Top Etiquetas</h2>
+              <a href="presupuestos.html" class="rounded-lg border border-app-border px-3 py-1.5 text-xs font-semibold hover:border-app-primary hover:text-app-primary">Ver detalle</a>
+            </div>
+            <ul class="mt-4 space-y-4">
+              <li class="rounded-xl border border-app-border p-3">
+                <div class="flex items-center justify-between text-sm">
+                  <span class="font-medium">Alimentacion</span>
+                  <span class="font-mono text-app-warning">$ 850.000</span>
+                </div>
+              </li>
+              <li class="rounded-xl border border-app-border p-3">
+                <div class="flex items-center justify-between text-sm">
+                  <span class="font-medium">Transporte</span>
+                  <span class="font-mono text-app-positive">$ 320.000</span>
+                </div>
+              </li>
+              <li class="rounded-xl border border-app-border p-3">
+                <div class="flex items-center justify-between text-sm">
+                  <span class="font-medium">Entretenimiento</span>
+                  <span class="font-mono text-app-negative">$ 560.000</span>
+                </div>
+              </li>
+            </ul>
+          </article>
+        </section>
+
+        <section class="mt-6 rounded-2xl border border-app-border bg-app-surface p-5 shadow-card md:p-6">
+          <div class="flex items-center justify-between gap-3">
+            <h2 class="text-lg font-semibold md:text-xl">Estados Visuales (Subfase 1.3)</h2>
+            <span class="rounded-full bg-app-primary/10 px-3 py-1 text-xs font-semibold text-app-primary">UI States</span>
+          </div>
+          <div class="mt-4 grid gap-4 md:grid-cols-3">
+            <article class="state-box" data-state="loading">
+              <h3 class="font-medium">Loading dashboard</h3>
+              <p>Cargando resumen mensual y metricas...</p>
+              <div class="mt-3 h-2 w-full rounded-full bg-app-border"></div>
+            </article>
+            <article class="state-box" data-state="empty">
+              <h3 class="font-medium">Sin datos del mes</h3>
+              <p>No hay movimientos en este periodo. Crea tu primer movimiento.</p>
+            </article>
+            <article class="state-box" data-state="error">
+              <h3 class="font-medium">Error de carga</h3>
+              <p>No fue posible obtener el resumen mensual. Reintenta.</p>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

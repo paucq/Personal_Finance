@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transacciones | Personal Finance</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto+Mono:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              app: {
+                bg: '#f4f7f5',
+                surface: '#ffffff',
+                text: '#1d2a24',
+                muted: '#5d6e66',
+                border: '#d7e0db',
+                primary: '#1e7a4d',
+                primaryStrong: '#155f3b',
+                positive: '#2e9d5b',
+                negative: '#c63d2f',
+                warning: '#d08700',
+                info: '#2b6cb0'
+              }
+            },
+            fontFamily: {
+              sans: ['Poppins', 'sans-serif'],
+              mono: ['Roboto Mono', 'monospace']
+            },
+            boxShadow: {
+              card: '0 6px 20px rgba(17, 34, 25, 0.08)'
+            }
+          }
+        }
+      };
+    </script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="bg-app-bg text-app-text">
+    <div class="app-bg min-h-screen">
+      <header class="border-b border-app-border/70 bg-app-surface/90 backdrop-blur-sm">
+        <div class="mx-auto w-full max-w-7xl px-4 py-4 md:px-6">
+          <div class="flex flex-wrap items-center justify-between gap-4">
+            <div>
+              <p class="text-xs font-medium uppercase tracking-[0.24em] text-app-muted">Personal Finance</p>
+              <h1 class="text-xl font-semibold md:text-2xl">Gestion de Transacciones</h1>
+            </div>
+            <nav class="flex flex-wrap gap-2 text-sm">
+              <a class="nav-link" href="dashboard.html">Dashboard</a>
+              <a class="nav-link is-active" href="transacciones.html">Transacciones</a>
+              <a class="nav-link" href="presupuestos.html">Presupuestos</a>
+            </nav>
+          </div>
+        </div>
+      </header>
+
+      <main class="mx-auto w-full max-w-7xl px-4 py-6 md:px-6 md:py-8">
+        <section class="grid gap-6 xl:grid-cols-[0.95fr_1.05fr]">
+          <article class="rounded-2xl border border-app-border bg-app-surface p-5 shadow-card md:p-6">
+            <h2 class="text-lg font-semibold md:text-xl">Agregar Movimiento</h2>
+            <p class="mt-1 text-sm text-app-muted">Vista de formulario para crear y editar movimientos.</p>
+            <form class="mt-5 space-y-4">
+              <div class="grid gap-4 md:grid-cols-2">
+                <label class="space-y-1 text-sm">
+                  <span class="font-medium">Tipo</span>
+                  <select class="w-full rounded-xl border border-app-border bg-white px-3 py-2.5 text-sm outline-none focus:border-app-primary">
+                    <option>Ingreso</option>
+                    <option>Gasto</option>
+                  </select>
+                </label>
+                <label class="space-y-1 text-sm">
+                  <span class="font-medium">Monto (COP)</span>
+                  <input type="number" placeholder="0" class="w-full rounded-xl border border-app-border px-3 py-2.5 text-sm outline-none focus:border-app-primary" />
+                </label>
+              </div>
+              <label class="space-y-1 text-sm">
+                <span class="font-medium">Descripcion</span>
+                <input type="text" placeholder="Ej. Mercado semanal" class="w-full rounded-xl border border-app-border px-3 py-2.5 text-sm outline-none focus:border-app-primary" />
+              </label>
+              <div class="grid gap-4 md:grid-cols-2">
+                <label class="space-y-1 text-sm">
+                  <span class="font-medium">Fecha</span>
+                  <input type="date" class="w-full rounded-xl border border-app-border px-3 py-2.5 text-sm outline-none focus:border-app-primary" />
+                </label>
+                <label class="space-y-1 text-sm">
+                  <span class="font-medium">Metodo de pago</span>
+                  <select class="w-full rounded-xl border border-app-border bg-white px-3 py-2.5 text-sm outline-none focus:border-app-primary">
+                    <option>Efectivo</option>
+                    <option>Tarjeta</option>
+                    <option>Transferencia</option>
+                  </select>
+                </label>
+              </div>
+              <label class="space-y-1 text-sm">
+                <span class="font-medium">Etiqueta</span>
+                <select class="w-full rounded-xl border border-app-border bg-white px-3 py-2.5 text-sm outline-none focus:border-app-primary">
+                  <option>Alimentacion</option>
+                  <option>Transporte</option>
+                  <option>Vivienda</option>
+                  <option>Salud</option>
+                </select>
+              </label>
+              <div class="flex flex-wrap items-center gap-3 pt-2">
+                <button type="button" class="rounded-xl bg-app-primary px-4 py-2.5 text-sm font-semibold text-white hover:bg-app-primaryStrong">Guardar Movimiento</button>
+                <button type="button" class="rounded-xl border border-app-border px-4 py-2.5 text-sm font-medium text-app-text hover:border-app-primary hover:text-app-primary">Limpiar</button>
+              </div>
+            </form>
+          </article>
+
+          <article class="rounded-2xl border border-app-border bg-app-surface p-5 shadow-card md:p-6">
+            <div class="flex flex-wrap items-center justify-between gap-3">
+              <h2 class="text-lg font-semibold md:text-xl">Movimientos Recientes</h2>
+              <div class="flex flex-wrap gap-2">
+                <span class="rounded-full bg-app-primary/10 px-3 py-1 text-xs font-semibold text-app-primary">Todos</span>
+                <span class="rounded-full bg-app-info/10 px-3 py-1 text-xs font-semibold text-app-info">Ingreso</span>
+                <span class="rounded-full bg-app-negative/10 px-3 py-1 text-xs font-semibold text-app-negative">Gasto</span>
+              </div>
+            </div>
+
+            <ul class="mt-4 space-y-3">
+              <li class="flex items-start justify-between gap-4 rounded-xl border border-app-border p-3">
+                <div>
+                  <p class="font-medium">Pago mensual</p>
+                  <p class="mt-1 text-xs text-app-muted">30 Mar 2026 - Transferencia - Trabajo</p>
+                </div>
+                <div class="text-right">
+                  <p class="font-mono font-semibold text-app-info">+ $ 3.800.000</p>
+                  <div class="mt-2 flex gap-2">
+                    <button class="rounded-lg border border-app-border px-2 py-1 text-xs hover:border-app-primary hover:text-app-primary">Editar</button>
+                    <button class="rounded-lg border border-app-negative/30 px-2 py-1 text-xs text-app-negative hover:bg-app-negative/5">Eliminar</button>
+                  </div>
+                </div>
+              </li>
+              <li class="flex items-start justify-between gap-4 rounded-xl border border-app-border p-3">
+                <div>
+                  <p class="font-medium">Mercado quincenal</p>
+                  <p class="mt-1 text-xs text-app-muted">29 Mar 2026 - Tarjeta - Alimentacion</p>
+                </div>
+                <div class="text-right">
+                  <p class="font-mono font-semibold text-app-negative">- $ 280.000</p>
+                  <div class="mt-2 flex gap-2">
+                    <button class="rounded-lg border border-app-border px-2 py-1 text-xs hover:border-app-primary hover:text-app-primary">Editar</button>
+                    <button class="rounded-lg border border-app-negative/30 px-2 py-1 text-xs text-app-negative hover:bg-app-negative/5">Eliminar</button>
+                  </div>
+                </div>
+              </li>
+              <li class="flex items-start justify-between gap-4 rounded-xl border border-app-border p-3">
+                <div>
+                  <p class="font-medium">Taxi aeropuerto</p>
+                  <p class="mt-1 text-xs text-app-muted">28 Mar 2026 - Efectivo - Transporte</p>
+                </div>
+                <div class="text-right">
+                  <p class="font-mono font-semibold text-app-negative">- $ 45.000</p>
+                  <div class="mt-2 flex gap-2">
+                    <button class="rounded-lg border border-app-border px-2 py-1 text-xs hover:border-app-primary hover:text-app-primary">Editar</button>
+                    <button class="rounded-lg border border-app-negative/30 px-2 py-1 text-xs text-app-negative hover:bg-app-negative/5">Eliminar</button>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </article>
+        </section>
+
+        <section class="mt-6 grid gap-6 xl:grid-cols-[1.05fr_0.95fr]">
+          <article class="rounded-2xl border border-app-border bg-app-surface p-5 shadow-card md:p-6">
+            <h2 class="text-lg font-semibold md:text-xl">Estados de Lista</h2>
+            <div class="mt-4 grid gap-4 md:grid-cols-3">
+              <article class="state-box" data-state="empty">
+                <h3 class="font-medium">Empty state</h3>
+                <p>No hay transacciones para el filtro seleccionado.</p>
+              </article>
+              <article class="state-box" data-state="loading">
+                <h3 class="font-medium">Loading state</h3>
+                <p>Cargando historial de movimientos...</p>
+                <div class="mt-3 h-2 w-full rounded-full bg-app-border"></div>
+              </article>
+              <article class="state-box" data-state="error">
+                <h3 class="font-medium">Error state</h3>
+                <p>Fallamos al cargar movimientos. Intenta otra vez.</p>
+              </article>
+            </div>
+          </article>
+
+          <article class="mock-modal p-5 md:p-6">
+            <p class="text-xs font-semibold uppercase tracking-[0.2em] text-app-muted">Confirmacion</p>
+            <h2 class="mt-2 text-lg font-semibold md:text-xl">Eliminar movimiento</h2>
+            <p class="mt-2 text-sm text-app-muted">
+              Esta accion no se puede deshacer. El movimiento saldra del resumen mensual y del saldo total.
+            </p>
+            <div class="mt-4 flex flex-wrap gap-3">
+              <button type="button" class="rounded-xl border border-app-border px-4 py-2.5 text-sm font-medium hover:border-app-primary hover:text-app-primary">Cancelar</button>
+              <button type="button" class="rounded-xl bg-app-negative px-4 py-2.5 text-sm font-semibold text-white">Si, eliminar</button>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
