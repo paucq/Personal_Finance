@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import type { Transaction } from '../../types';
-import { paymentMethodOptions, tagOptions, transactionTypeOptions } from '../../utils/constants';
+import { paymentMethodOptions, transactionTypeOptions } from '../../utils/constants';
 import Button from '../ui/Button';
 import Input from '../ui/Input';
 import Select from '../ui/Select';
@@ -14,10 +14,16 @@ interface TransactionFormValues {
   tagId: string;
 }
 
+interface SelectOption {
+  value: string;
+  label: string;
+}
+
 interface TransactionFormProps {
   editingTransaction: Transaction | null;
   onSubmit: (values: TransactionFormValues) => void;
   onCancelEdit: () => void;
+  tagOptions: SelectOption[];
 }
 
 const initialValues: TransactionFormValues = {
@@ -29,7 +35,7 @@ const initialValues: TransactionFormValues = {
   tagId: 'alimentacion',
 };
 
-function TransactionForm({ editingTransaction, onSubmit, onCancelEdit }: TransactionFormProps): JSX.Element {
+function TransactionForm({ editingTransaction, onSubmit, onCancelEdit, tagOptions }: TransactionFormProps): JSX.Element {
   const [values, setValues] = useState<TransactionFormValues>(initialValues);
   const [errors, setErrors] = useState<Record<string, string>>({});
 

@@ -87,11 +87,9 @@ Estado:
 - Validaciones de formulario.
 
 Estado:
-- En progreso.
-- Avance actual (Persona A):
-  - Componentes UI base creados (`Button`, `Input`, `Select`, `Tag`, `Modal`).
-  - Hook `useTransactions` con estado local y operaciones CRUD.
-  - Integracion de `TransactionForm`, `TransactionFilters`, `TransactionList`, `TransactionItem` en la pagina `Transactions`.
+- Completada.
+- Avance final (Persona A): componentes UI base, hook `useTransactions` con persistencia localStorage, CRUD completo en `Transactions.tsx`.
+- Integracion: `TransactionForm` consume `tagOptions` dinamicos de `useTags`. `TransactionList`/`TransactionItem` muestran nombres de etiqueta.
 
 #### 2.3 Balance y resumen
 
@@ -99,20 +97,44 @@ Estado:
 - Colores segun estado (verde/rojo).
 - Resumen mensual en dashboard.
 
+Estado:
+- Completada.
+- `src/hooks/useBalance.ts` implementado con metricas por etiqueta.
+- `src/pages/Home.tsx` conectado a datos reales via `useTransactions` y `useBalance`.
+
 #### 2.4 Etiquetas y presupuestos
 
 - Cargar etiquetas predefinidas.
 - Crear etiquetas personalizadas.
 - Crear y visualizar presupuestos por categoria.
 
+Estado:
+- Completada.
+- `src/hooks/useTags.ts` con tags predefinidos + custom, persistencia en localStorage.
+- `src/hooks/useBudgets.ts` con calculo de gasto por etiqueta y porcentaje de consumo.
+- Componentes `BudgetForm`, `BudgetList`, `BudgetItem` en `src/components/budgets/`.
+- `src/pages/Budgets.tsx` integrado con alertas visuales (normal, warning, overflow).
+
 #### 2.5 Graficos
 
 - Integrar Recharts para distribucion de gastos.
 - Integrar grafico de tendencia mensual.
 
+Estado:
+- Completada.
+- `recharts` instalado.
+- `ExpenseByTag` (PieChart) y `MonthlyTrend` (BarChart) en `src/components/dashboard/`.
+- Integrados en `src/pages/Home.tsx`.
+
 #### 2.6 Persistencia temporal
 
 - Guardar y recuperar datos con localStorage.
+
+Estado:
+- Completada.
+- `src/services/localStorage.ts` con helpers `getItem`, `setItem`, `removeItem`.
+- `src/hooks/useLocalStorage.ts` generico y tipado.
+- `useTransactions`, `useTags`, `useBudgets` usan `useLocalStorage` para persistencia.
 
 Criterios de aceptacion Fase 2:
 - App funcional completa en frontend.
