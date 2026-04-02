@@ -4,9 +4,10 @@ Aplicacion web para control de finanzas personales enfocada en registrar ingreso
 
 ## Estado del Proyecto
 
-- Fase actual: **Fase 1 - Documentacion + Maquetacion (HTML/CSS)**
-- Subfase actual: **1.3 Responsive y estados visuales (en progreso)**
-- Siguiente subfase: **Cierre Fase 1 y preparacion de setup React + TypeScript**
+- Fase actual: **Fase 2 - Integracion con React + TypeScript**
+- Estado de Fase 1: **Cerrada**
+- Subfase activa: **2.2 Dominio de transacciones**
+- Estado de subfase 2.1: **Completada**
 
 ## Stack Tecnologico
 
@@ -27,6 +28,24 @@ Aplicacion web para control de finanzas personales enfocada en registrar ingreso
 - Maquetacion inicial creada en `index.html` + `styles.css` con dashboard, formulario de movimientos, lista de transacciones y panel de presupuestos.
 - Maquetacion separada por vistas en `dashboard.html`, `transacciones.html` y `presupuestos.html` con navegacion compartida para facilitar migracion a React.
 - Estados visuales implementados en maquetacion: `empty`, `loading`, `error` y `confirmacion de eliminacion`.
+- Cierre de Fase 1 aprobado: documentacion completa, maquetacion responsive y estados UX listos para portar a React.
+- Setup tecnico 2.1 implementado con Vite + React + TypeScript + Tailwind + React Router + ESLint.
+- Estructura base de `src/` creada con paginas iniciales y tipos de dominio (`Transaction`, `Tag`, `Budget`).
+
+## Arranque rapido
+
+- Instalar dependencias: `npm install`
+- Desarrollo local: `npm run dev`
+- Build de produccion: `npm run build`
+- Lint: `npm run lint`
+
+## Cierre de Fase 1 (Checklist)
+
+- Documentacion base completada en `docs/`.
+- Maquetacion principal separada por vistas (`dashboard.html`, `transacciones.html`, `presupuestos.html`).
+- Navegacion y estilos compartidos consolidados en `styles.css`.
+- Estados visuales de UX listos: `empty`, `loading`, `error`, `confirm`.
+- Mapeo documentado de vistas HTML a componentes React.
 
 Ver detalle de decisiones en:
 - `docs/alcance_del_proyecto.md`
@@ -51,7 +70,6 @@ Checklist minimo por actualizacion:
 ```text
 docs/
 ├── alcance_del_proyecto.md
-├── fase_1_documentacion_y_maquetacion.md
 ├── sistema_de_diseño.md
 ├── tech_stack.md
 ├── arquitectura_del_proyecto.md

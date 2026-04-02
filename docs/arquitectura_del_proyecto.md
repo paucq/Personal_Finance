@@ -28,9 +28,19 @@ Personal_Finance/
 │   └── main.tsx
 ├── index.html
 ├── package.json
+├── postcss.config.js
 ├── tailwind.config.js
+├── tsconfig.app.json
+├── tsconfig.node.json
+├── tsconfig.json
+├── vite.config.ts
 └── README.md
 ```
+
+Estado actual (Fase 2.1):
+
+- Estructura base inicial creada en `src/` con `pages/`, `styles/`, `types/`, `assets/`, `components/`, `hooks/`, `services/` y `utils/`.
+- Ruteo base habilitado con `react-router-dom` en `src/App.tsx`.
 
 ## 3. Dominios funcionales
 

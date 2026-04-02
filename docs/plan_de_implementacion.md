@@ -8,8 +8,8 @@ El proyecto se implementa por fases de aprendizaje incremental. Cada fase tiene 
 
 Objetivo: definir completamente el producto y construir interfaz visual sin logica de framework.
 
-Documento detallado de la fase:
-- `docs/fase_1_documentacion_y_maquetacion.md`
+Estado global de fase:
+- Cerrada.
 
 ### Subfases
 
@@ -45,17 +45,25 @@ Entregable:
 - UI consistente y usable en ambos formatos.
 
 Estado:
-- En progreso.
-- Avance actual: estados visuales `empty`, `loading`, `error` y confirmacion de eliminacion maquetados en vistas principales.
+- Completada.
+- Avance final: estados visuales `empty`, `loading`, `error` y confirmacion de eliminacion maquetados en vistas principales.
 
 Criterios de aceptacion Fase 1:
 - Documentacion completa.
 - Layouts listos para integrar a React.
 - Sistema visual consistente.
 
+Resultado del cierre:
+- Criterios de aceptacion cumplidos.
+- Se habilita inicio formal de Fase 2.
+
 ## 3. Fase 2: Integracion con React + TypeScript
 
 Objetivo: convertir maquetacion en aplicacion funcional con estado y logica.
+
+Estado global de fase:
+- En progreso.
+- Subfase activa: 2.2 Dominio de transacciones.
 
 ### Subfases
 
@@ -63,6 +71,10 @@ Objetivo: convertir maquetacion en aplicacion funcional con estado y logica.
 
 - Inicializar Vite + React + TypeScript + Tailwind.
 - Configurar estructura de carpetas y tipos base.
+
+Estado:
+- Completada.
+- Entregado: scaffold React/TS con Vite, Tailwind configurado, React Router base, ESLint, paginas iniciales y tipos de dominio en `src/types/`.
 
 #### 2.2 Dominio de transacciones
 

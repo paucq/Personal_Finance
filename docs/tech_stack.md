@@ -13,6 +13,7 @@
 ### 2.1 Aplicacion
 
 - `react`, `react-dom`
+- `react-router-dom` para rutas de la aplicacion
 - `typescript`
 - `vite` para entorno de desarrollo
 - `tailwindcss`, `postcss`, `autoprefixer`
@@ -22,8 +23,13 @@
 ### 2.2 Calidad y mantenimiento
 
 - `eslint` para linting
+- `typescript-eslint` para reglas TS en ESLint
 - `prettier` para formateo (opcional recomendado)
 - `@types/*` segun necesidad
+
+## 2.3 Estado de setup (Fase 2.1)
+
+- Scaffold tecnico implementado y verificado con `npm run build` y `npm run lint`.
 
 ## 3. Entorno y configuracion
 

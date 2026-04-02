@@ -3,49 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Personal Finance | Inicio Maquetas</title>
+    <title>Personal Finance App</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              app: {
-                bg: '#f4f7f5',
-                surface: '#ffffff',
-                text: '#1d2a24',
-                muted: '#5d6e66',
-                border: '#d7e0db',
-                primary: '#1e7a4d',
-                primaryStrong: '#155f3b'
-              }
-            },
-            fontFamily: {
-              sans: ['Poppins', 'sans-serif']
-            }
-          }
-        }
-      };
-    </script>
-    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto+Mono:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body class="bg-app-bg text-app-text">
-    <main class="app-bg min-h-screen px-4 py-10 md:px-6">
-      <div class="mx-auto w-full max-w-3xl rounded-3xl border border-app-border bg-app-surface p-6 shadow-card md:p-8">
-        <p class="text-xs font-medium uppercase tracking-[0.24em] text-app-muted">Personal Finance</p>
-        <h1 class="mt-2 text-2xl font-semibold md:text-3xl">Maquetacion Fase 1.2</h1>
-        <p class="mt-3 text-sm text-app-muted">
-          Selecciona una vista para revisar la estructura visual previa a la implementacion con React + TypeScript.
-        </p>
-        <div class="mt-6 grid gap-3 md:grid-cols-3">
-          <a href="dashboard.html" class="rounded-2xl border border-app-border px-4 py-4 font-medium transition hover:border-app-primary hover:text-app-primary">Dashboard</a>
-          <a href="transacciones.html" class="rounded-2xl border border-app-border px-4 py-4 font-medium transition hover:border-app-primary hover:text-app-primary">Transacciones</a>
-          <a href="presupuestos.html" class="rounded-2xl border border-app-border px-4 py-4 font-medium transition hover:border-app-primary hover:text-app-primary">Presupuestos</a>
-        </div>
-      </div>
-    </main>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

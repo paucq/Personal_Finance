@@ -173,3 +173,15 @@ Regla de migracion:
 
 - La maquetacion HTML/CSS es fuente visual inicial.
 - En fase React se replica primero la estructura y luego se integra estado/logica.
+
+## 9. Cierre de Fase 1 y readiness para React
+
+Decision de cierre:
+
+- Se considera cerrada la fase de maquetacion al cumplir documentacion completa, vistas separadas por dominio visual y estados UX base.
+
+Activos listos para migrar:
+
+- Vistas: `dashboard.html`, `transacciones.html`, `presupuestos.html`.
+- Estilos compartidos y estados: `styles.css`.
+- Mapeo de componentes para implementacion en React ya documentado en este archivo.
