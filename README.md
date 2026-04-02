@@ -6,8 +6,8 @@ Aplicacion web para control de finanzas personales enfocada en registrar ingreso
 
 - Fase actual: **Fase 2 - Integracion con React + TypeScript**
 - Estado de Fase 1: **Cerrada**
-- Subfase activa: **2.2 Dominio de transacciones (en progreso)**
-- Estado de subfase 2.1: **Completada**
+- Subfase activa: **Bloque 8 - Cierre de Fase 2 (QA cruzado pendiente)**
+- Estado de subfases 2.1 a 2.6: **Completadas**
 
 ## Stack Tecnologico
 
@@ -32,6 +32,13 @@ Aplicacion web para control de finanzas personales enfocada en registrar ingreso
 - Setup tecnico 2.1 implementado con Vite + React + TypeScript + Tailwind + React Router + ESLint.
 - Estructura base de `src/` creada con paginas iniciales y tipos de dominio (`Transaction`, `Tag`, `Budget`).
 - Implementacion Persona A iniciada: componentes UI base, `useTransactions` y flujo CRUD visual en `src/pages/Transactions.tsx`.
+- Implementacion Persona B completada:
+  - Persistencia local: `src/services/localStorage.ts` + `src/hooks/useLocalStorage.ts`.
+  - Dashboard: `useBalance` con metricas reales, `Home.tsx` conectado.
+  - Etiquetas: `useTags` con tags predefinidos + custom, persistencia localStorage.
+  - Presupuestos: `useBudgets` + componentes `BudgetForm`, `BudgetList`, `BudgetItem` en `src/components/budgets/`.
+  - Graficos: `recharts` con `ExpenseByTag` (PieChart) y `MonthlyTrend` (BarChart) en `src/components/dashboard/`.
+- Integracion cruzada: `TransactionForm` consume `tagOptions` dinamicos, `TransactionList` muestra nombres de etiqueta.
 
 ## Arranque rapido
 

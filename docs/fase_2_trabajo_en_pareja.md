@@ -33,7 +33,7 @@ Definir un flujo paso a paso para que dos personas implementen la Fase 2 de form
 
 El orden es secuencial por bloques para que siempre haya contexto y contratos claros.
 
-### Bloque 1 - Contratos compartidos (A + B)
+### Bloque 1 - Contratos compartidos (A + B) [CERRADO]
 
 Objetivo: congelar interfaces y constantes para evitar retrabajos.
 
@@ -50,9 +50,11 @@ Pasos:
 Salida esperada:
 - Contratos acordados y estables para iniciar trabajo paralelo real.
 
+Estado: Cerrado. Tipos confirmados (`Transaction`, `Tag`, `Budget`), contratos de hooks definidos y storage keys centralizadas en `src/utils/constants.ts`.
+
 ---
 
-### Bloque 2 - Persona B habilita infraestructura local
+### Bloque 2 - Persona B habilita infraestructura local [CERRADO]
 
 Dependencia: Bloque 1 cerrado.
 
@@ -69,9 +71,11 @@ Pasos Persona B:
 Criterio de salida:
 - API de persistencia lista y documentada para integracion de Persona A.
 
+Estado: Cerrado. `src/services/localStorage.ts` con helpers `getItem`, `setItem`, `removeItem`. `src/hooks/useLocalStorage.ts` generico y tipado. Storage keys en `src/utils/constants.ts`.
+
 ---
 
-### Bloque 3 - Persona A conecta CRUD a persistencia
+### Bloque 3 - Persona A conecta CRUD a persistencia [CERRADO]
 
 Dependencia: Bloque 2 cerrado.
 
@@ -89,9 +93,11 @@ Pasos Persona A:
 Criterio de salida:
 - CRUD funcional persistente en localStorage.
 
+Estado: Cerrado. `useTransactions` refactorizado para usar `useLocalStorage`. Operaciones CRUD conservadas. `Transactions.tsx` actualizado para recibir `tagOptions` dinamicos.
+
 ---
 
-### Bloque 4 - Persona B implementa balance y dashboard basico
+### Bloque 4 - Persona B implementa balance y dashboard basico [CERRADO]
 
 Dependencia: Bloque 3 cerrado.
 
@@ -106,9 +112,11 @@ Pasos Persona B:
 Criterio de salida:
 - Dashboard con metricas reales conectadas a transacciones.
 
+Estado: Cerrado. `src/hooks/useBalance.ts` implementado con metricas por etiqueta. `src/pages/Home.tsx` conectado a datos reales via `useTransactions` y `useBalance`.
+
 ---
 
-### Bloque 5 - Persona B implementa etiquetas
+### Bloque 5 - Persona B implementa etiquetas [CERRADO]
 
 Dependencia: Bloque 3 cerrado (ideal junto a Bloque 4).
 
@@ -126,9 +134,11 @@ Integracion con Persona A:
 Criterio de salida:
 - Etiquetas dinamicas integradas en transacciones.
 
+Estado: Cerrado. `src/hooks/useTags.ts` implementado con tags predefinidos + custom, persistencia en localStorage. `TransactionForm` consume `tagOptions` dinamicos. `TransactionList`/`TransactionItem` muestran nombres de etiqueta.
+
 ---
 
-### Bloque 6 - Persona B implementa presupuestos
+### Bloque 6 - Persona B implementa presupuestos [CERRADO]
 
 Dependencia: Bloque 5 cerrado.
 
@@ -144,9 +154,11 @@ Pasos Persona B:
 Criterio de salida:
 - Modulo de presupuestos funcional y conectado a transacciones/etiquetas.
 
+Estado: Cerrado. `src/hooks/useBudgets.ts` implementado con calculo de gasto por etiqueta y porcentaje. Componentes `BudgetForm`, `BudgetList`, `BudgetItem` creados en `src/components/budgets/`. `src/pages/Budgets.tsx` integrado.
+
 ---
 
-### Bloque 7 - Persona B implementa graficos (Recharts)
+### Bloque 7 - Persona B implementa graficos (Recharts) [CERRADO]
 
 Dependencia: Bloques 4 y 6 cerrados.
 
@@ -162,6 +174,8 @@ Pasos Persona B:
 
 Criterio de salida:
 - Dashboard con graficos funcionales y consistentes con el diseno.
+
+Estado: Cerrado. `recharts` instalado. `ExpenseByTag` (PieChart) y `MonthlyTrend` (BarChart) creados en `src/components/dashboard/`. Integrados en `src/pages/Home.tsx`.
 
 ---
 
@@ -220,9 +234,15 @@ Pasos:
 
 Actualizar esta seccion cuando cambien contratos de hooks/props:
 
-- `useTransactions`: CRUD + `metrics` + lista de `transactions`.
-- `TransactionForm`: recibe `editingTransaction`, `onSubmit`, `onCancelEdit`.
-- `TransactionList`: recibe lista filtrada y callbacks `onEdit`, `onDelete`.
+- `useTransactions`: CRUD persistente via `useLocalStorage`. Retorna `transactions`, `addTransaction`, `updateTransaction`, `deleteTransaction`.
+- `useLocalStorage<T>`: hook generico. Recibe `key` e `initialValue`. Retorna `[value, setValue]` con persistencia automatica.
+- `useBalance(transactions)`: retorna `income`, `expense`, `balance`, `expenseByTag`, `incomeByTag`.
+- `useTags`: retorna `tags`, `tagOptions`, `addTag`, `removeTag`, `getTagById`. Persiste en localStorage.
+- `useBudgets(transactions)`: retorna `budgets`, `budgetsWithSpent`, `addBudget`, `updateBudget`, `deleteBudget`. Persiste en localStorage.
+- `TransactionForm`: recibe `editingTransaction`, `onSubmit`, `onCancelEdit`, `tagOptions`.
+- `TransactionList`: recibe `transactions`, `tags`, `onEdit`, `onDelete`.
+- `TransactionItem`: recibe `transaction`, `tags`, `onEdit`, `onDelete`.
+- Storage keys centralizadas en `STORAGE_KEYS` (`pf_transactions`, `pf_tags`, `pf_budgets`).
 
 ## 9. Definition of Done para Fase 2
 

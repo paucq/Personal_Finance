@@ -1,5 +1,7 @@
-import { useMemo, useState } from 'react';
+import { useCallback } from 'react';
 import type { PaymentMethod, Transaction, TransactionType } from '../types';
+import { STORAGE_KEYS } from '../utils/constants';
+import useLocalStorage from './useLocalStorage';
 
 export interface TransactionFormValues {
   type: TransactionType;
@@ -10,7 +12,7 @@ export interface TransactionFormValues {
   tagId: string;
 }
 
-const initialData: Transaction[] = [
+const initialTransactions: Transaction[] = [
   {
     id: 'tx-1',
     type: 'income',
@@ -48,37 +50,31 @@ function buildTransaction(values: TransactionFormValues): Transaction {
 }
 
 function useTransactions() {
-  const [transactions, setTransactions] = useState<Transaction[]>(initialData);
-  const [status, setStatus] = useState<'idle' | 'loading' | 'error'>('idle');
+  const [transactions, setTransactions] = useLocalStorage<Transaction[]>(STORAGE_KEYS.TRANSACTIONS, initialTransactions);
 
-  const addTransaction = (values: TransactionFormValues) => {
-    setStatus('loading');
-    setTransactions((prev) => [buildTransaction(values), ...prev]);
-    setStatus('idle');
-  };
+  const addTransaction = useCallback(
+    (values: TransactionFormValues) => {
+      setTransactions((prev) => [buildTransaction(values), ...prev]);
+    },
+    [setTransactions],
+  );
 
-  const updateTransaction = (id: string, values: TransactionFormValues) => {
-    setTransactions((prev) => prev.map((item) => (item.id === id ? { ...item, ...values } : item)));
-  };
+  const updateTransaction = useCallback(
+    (id: string, values: TransactionFormValues) => {
+      setTransactions((prev) => prev.map((item) => (item.id === id ? { ...item, ...values } : item)));
+    },
+    [setTransactions],
+  );
 
-  const deleteTransaction = (id: string) => {
-    setTransactions((prev) => prev.filter((item) => item.id !== id));
-  };
-
-  const metrics = useMemo(() => {
-    const income = transactions.filter((item) => item.type === 'income').reduce((acc, item) => acc + item.amount, 0);
-    const expense = transactions.filter((item) => item.type === 'expense').reduce((acc, item) => acc + item.amount, 0);
-    return {
-      income,
-      expense,
-      balance: income - expense,
-    };
-  }, [transactions]);
+  const deleteTransaction = useCallback(
+    (id: string) => {
+      setTransactions((prev) => prev.filter((item) => item.id !== id));
+    },
+    [setTransactions],
+  );
 
   return {
     transactions,
-    status,
-    metrics,
     addTransaction,
     updateTransaction,
     deleteTransaction,

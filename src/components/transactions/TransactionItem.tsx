@@ -1,23 +1,26 @@
-import type { Transaction } from '../../types';
+import type { Tag, Transaction } from '../../types';
 import { formatCurrency, formatDate } from '../../utils/formatters';
 import Button from '../ui/Button';
 
 interface TransactionItemProps {
   transaction: Transaction;
+  tags: Tag[];
   onEdit: (transaction: Transaction) => void;
   onDelete: (transaction: Transaction) => void;
 }
 
-function TransactionItem({ transaction, onEdit, onDelete }: TransactionItemProps): JSX.Element {
+function TransactionItem({ transaction, tags, onEdit, onDelete }: TransactionItemProps): JSX.Element {
   const amountClass = transaction.type === 'income' ? 'text-app-info' : 'text-app-negative';
   const amountPrefix = transaction.type === 'income' ? '+' : '-';
+  const tag = tags.find((t) => t.id === transaction.tagId);
+  const tagName = tag?.name ?? transaction.tagId;
 
   return (
     <li className="flex items-start justify-between gap-4 rounded-xl border border-app-border p-3">
       <div>
         <p className="font-medium">{transaction.description}</p>
         <p className="mt-1 text-xs text-app-muted">
-          {formatDate(transaction.date)} - {transaction.paymentMethod} - {transaction.tagId}
+          {formatDate(transaction.date)} - {transaction.paymentMethod} - {tagName}
         </p>
       </div>
       <div className="text-right">

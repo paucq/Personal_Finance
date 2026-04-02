@@ -4,12 +4,16 @@ import TransactionFilters, { type FilterValue } from '../components/transactions
 import TransactionList from '../components/transactions/TransactionList';
 import Button from '../components/ui/Button';
 import Modal from '../components/ui/Modal';
+import useBalance from '../hooks/useBalance';
+import useTags from '../hooks/useTags';
 import useTransactions from '../hooks/useTransactions';
 import type { Transaction } from '../types';
 import { formatCurrency } from '../utils/formatters';
 
 function Transactions(): JSX.Element {
-  const { transactions, metrics, addTransaction, updateTransaction, deleteTransaction } = useTransactions();
+  const { transactions, addTransaction, updateTransaction, deleteTransaction } = useTransactions();
+  const { income, expense, balance } = useBalance(transactions);
+  const { tags, tagOptions } = useTags();
   const [filter, setFilter] = useState<FilterValue>('all');
   const [editingTransaction, setEditingTransaction] = useState<Transaction | null>(null);
   const [deletingTransaction, setDeletingTransaction] = useState<Transaction | null>(null);
@@ -36,17 +40,17 @@ function Transactions(): JSX.Element {
       <section className="grid gap-4 md:grid-cols-3">
         <article className="rounded-2xl border border-app-border bg-app-surface p-5 shadow-card">
           <p className="text-sm text-app-muted">Saldo</p>
-          <p className={`mt-3 font-mono text-3xl font-bold ${metrics.balance >= 0 ? 'text-app-positive' : 'text-app-negative'}`}>
-            {formatCurrency(metrics.balance)}
+          <p className={`mt-3 font-mono text-3xl font-bold ${balance >= 0 ? 'text-app-positive' : 'text-app-negative'}`}>
+            {formatCurrency(balance)}
           </p>
         </article>
         <article className="rounded-2xl border border-app-border bg-app-surface p-5 shadow-card">
           <p className="text-sm text-app-muted">Ingresos</p>
-          <p className="mt-3 font-mono text-3xl font-bold text-app-info">{formatCurrency(metrics.income)}</p>
+          <p className="mt-3 font-mono text-3xl font-bold text-app-info">{formatCurrency(income)}</p>
         </article>
         <article className="rounded-2xl border border-app-border bg-app-surface p-5 shadow-card">
           <p className="text-sm text-app-muted">Gastos</p>
-          <p className="mt-3 font-mono text-3xl font-bold text-app-negative">{formatCurrency(metrics.expense)}</p>
+          <p className="mt-3 font-mono text-3xl font-bold text-app-negative">{formatCurrency(expense)}</p>
         </article>
       </section>
 
@@ -55,6 +59,7 @@ function Transactions(): JSX.Element {
           editingTransaction={editingTransaction}
           onSubmit={handleSubmit}
           onCancelEdit={() => setEditingTransaction(null)}
+          tagOptions={tagOptions}
         />
 
         <article className="rounded-2xl border border-app-border bg-app-surface p-5 shadow-card md:p-6">
@@ -65,6 +70,7 @@ function Transactions(): JSX.Element {
 
           <TransactionList
             transactions={filteredTransactions}
+            tags={tags}
             onEdit={(transaction) => setEditingTransaction(transaction)}
             onDelete={(transaction) => setDeletingTransaction(transaction)}
           />
