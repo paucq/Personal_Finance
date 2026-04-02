@@ -6,7 +6,7 @@ Aplicacion web para control de finanzas personales enfocada en registrar ingreso
 
 - Fase actual: **Fase 2 - Integracion con React + TypeScript**
 - Estado de Fase 1: **Cerrada**
-- Subfase activa: **2.2 Dominio de transacciones**
+- Subfase activa: **2.2 Dominio de transacciones (en progreso)**
 - Estado de subfase 2.1: **Completada**
 
 ## Stack Tecnologico
@@ -31,6 +31,7 @@ Aplicacion web para control de finanzas personales enfocada en registrar ingreso
 - Cierre de Fase 1 aprobado: documentacion completa, maquetacion responsive y estados UX listos para portar a React.
 - Setup tecnico 2.1 implementado con Vite + React + TypeScript + Tailwind + React Router + ESLint.
 - Estructura base de `src/` creada con paginas iniciales y tipos de dominio (`Transaction`, `Tag`, `Budget`).
+- Implementacion Persona A iniciada: componentes UI base, `useTransactions` y flujo CRUD visual en `src/pages/Transactions.tsx`.
 
 ## Arranque rapido
 
@@ -53,6 +54,7 @@ Ver detalle de decisiones en:
 - `docs/arquitectura_del_proyecto.md`
 - `docs/plan_de_implementacion.md`
 - `docs/sistema_de_diseño.md`
+- `docs/fase_2_trabajo_en_pareja.md`
 
 ## Regla Documental del Proyecto (obligatoria)
 

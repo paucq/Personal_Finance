@@ -65,6 +65,9 @@ Estado global de fase:
 - En progreso.
 - Subfase activa: 2.2 Dominio de transacciones.
 
+Guia operativa colaborativa:
+- Ver `docs/fase_2_trabajo_en_pareja.md` para orden secuencial de implementacion por persona, contratos y politica de integracion.
+
 ### Subfases
 
 #### 2.1 Setup tecnico
@@ -82,6 +85,13 @@ Estado:
 - Editar transaccion.
 - Eliminar transaccion.
 - Validaciones de formulario.
+
+Estado:
+- En progreso.
+- Avance actual (Persona A):
+  - Componentes UI base creados (`Button`, `Input`, `Select`, `Tag`, `Modal`).
+  - Hook `useTransactions` con estado local y operaciones CRUD.
+  - Integracion de `TransactionForm`, `TransactionFilters`, `TransactionList`, `TransactionItem` en la pagina `Transactions`.
 
 #### 2.3 Balance y resumen
 
