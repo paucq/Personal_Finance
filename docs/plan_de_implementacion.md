@@ -62,8 +62,8 @@ Resultado del cierre:
 Objetivo: convertir maquetacion en aplicacion funcional con estado y logica.
 
 Estado global de fase:
-- En progreso.
-- Subfase activa: 2.2 Dominio de transacciones.
+- Cerrada.
+- Siguiente fase: 3.1 Configuracion Firebase.
 
 Guia operativa colaborativa:
 - Ver `docs/fase_2_trabajo_en_pareja.md` para orden secuencial de implementacion por persona, contratos y politica de integracion.
@@ -140,6 +140,11 @@ Criterios de aceptacion Fase 2:
 - App funcional completa en frontend.
 - Persistencia local activa.
 - Flujos CRUD estables.
+
+Resultado del cierre:
+- Criterios de aceptacion cumplidos.
+- QA cruzado completado entre Persona A y Persona B.
+- Se habilita inicio formal de Fase 3 (Firebase).
 
 ## 4. Fase 3: Integracion con Firebase (Firestore)
 

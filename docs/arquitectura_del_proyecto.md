@@ -37,10 +37,11 @@ Personal_Finance/
 └── README.md
 ```
 
-Estado actual (Fase 2.1):
+Estado actual (Cierre Fase 2):
 
-- Estructura base inicial creada en `src/` con `pages/`, `styles/`, `types/`, `assets/`, `components/`, `hooks/`, `services/` y `utils/`.
-- Ruteo base habilitado con `react-router-dom` en `src/App.tsx`.
+- Estructura modular consolidada en `src/` con dominios `transactions`, `dashboard`, `budgets` y `ui`.
+- Persistencia temporal unificada con `src/services/localStorage.ts` + `src/hooks/useLocalStorage.ts`.
+- Ruteo activo para `Home`, `Transactions` y `Budgets`.
 
 ## 3. Dominios funcionales
 
@@ -109,6 +110,13 @@ export interface Budget {
 - Fase 3: `services/firebase.ts`
 
 Se recomienda definir una interfaz comun de repositorio para desacoplar UI de implementacion de persistencia.
+
+Implementacion actual en Fase 2:
+
+- `useTransactions` para CRUD de movimientos.
+- `useTags` para etiquetas predefinidas y personalizadas.
+- `useBudgets` para limites por categoria y estado de consumo.
+- `useBalance` para metricas agregadas del dashboard.
 
 ## 7. Convenciones de componentes
 

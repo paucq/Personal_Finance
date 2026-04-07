@@ -196,6 +196,15 @@ Pasos:
    - `docs/arquitectura_del_proyecto.md`
 4. Marcar Fase 2 como cerrada y preparar arranque de Firebase (Fase 3).
 
+Estado: Cerrado.
+- QA cruzado completado.
+- Ajustes finales de Persona A aplicados:
+  - contrato `TransactionFormValues` centralizado en `src/types/transaction.ts`
+  - hardening de formulario de transacciones para etiquetas no disponibles
+  - validacion explicita de etiqueta (`tagId`) antes de submit
+  - tipado robusto de tooltips en componentes de dashboard
+- Verificacion tecnica en verde: `npm run lint` y `npm run build`.
+
 ## 6. Matriz de ownership por carpetas
 
 - Persona A (ownership principal):

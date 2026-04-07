@@ -4,10 +4,10 @@ Aplicacion web para control de finanzas personales enfocada en registrar ingreso
 
 ## Estado del Proyecto
 
-- Fase actual: **Fase 2 - Integracion con React + TypeScript**
+- Fase actual: **Fase 3 - Integracion con Firebase (preparacion)**
 - Estado de Fase 1: **Cerrada**
-- Subfase activa: **Bloque 8 - Cierre de Fase 2 (QA cruzado pendiente)**
-- Estado de subfases 2.1 a 2.6: **Completadas**
+- Estado de Fase 2: **Cerrada**
+- Subfase activa: **3.1 Configuracion Firebase**
 
 ## Stack Tecnologico
 
@@ -39,6 +39,7 @@ Aplicacion web para control de finanzas personales enfocada en registrar ingreso
   - Presupuestos: `useBudgets` + componentes `BudgetForm`, `BudgetList`, `BudgetItem` en `src/components/budgets/`.
   - Graficos: `recharts` con `ExpenseByTag` (PieChart) y `MonthlyTrend` (BarChart) en `src/components/dashboard/`.
 - Integracion cruzada: `TransactionForm` consume `tagOptions` dinamicos, `TransactionList` muestra nombres de etiqueta.
+- Cierre de Fase 2 completado: QA cruzado, hardening final de Persona A y verificacion tecnica en verde (`npm run lint`, `npm run build`).
 
 ## Arranque rapido
 

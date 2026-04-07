@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import TransactionForm, { type TransactionFormValues } from '../components/forms/TransactionForm';
+import TransactionForm from '../components/forms/TransactionForm';
 import TransactionFilters, { type FilterValue } from '../components/transactions/TransactionFilters';
 import TransactionList from '../components/transactions/TransactionList';
 import Button from '../components/ui/Button';
@@ -7,7 +7,7 @@ import Modal from '../components/ui/Modal';
 import useBalance from '../hooks/useBalance';
 import useTags from '../hooks/useTags';
 import useTransactions from '../hooks/useTransactions';
-import type { Transaction } from '../types';
+import type { Transaction, TransactionFormValues } from '../types';
 import { formatCurrency } from '../utils/formatters';
 
 function Transactions(): JSX.Element {

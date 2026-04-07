@@ -53,7 +53,7 @@ function MonthlyTrend({ transactions }: MonthlyTrendProps): JSX.Element {
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="month" />
           <YAxis />
-          <Tooltip formatter={(value) => formatCurrency(Number(value))} />
+          <Tooltip formatter={(value: unknown) => formatCurrency(Number(value ?? 0))} />
           <Bar dataKey="ingresos" fill="#10b981" name="Ingresos" />
           <Bar dataKey="gastos" fill="#ef4444" name="Gastos" />
         </BarChart>

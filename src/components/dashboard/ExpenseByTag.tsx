@@ -36,7 +36,7 @@ function ExpenseByTag({ expenseByTag, tags }: ExpenseByTagProps): JSX.Element {
               <Cell key={entry.name} fill={entry.color} />
             ))}
           </Pie>
-          <Tooltip formatter={(value) => formatCurrency(Number(value))} />
+          <Tooltip formatter={(value: unknown) => formatCurrency(Number(value ?? 0))} />
           <Legend />
         </PieChart>
       </ResponsiveContainer>

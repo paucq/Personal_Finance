@@ -11,3 +11,12 @@ export interface Transaction {
   paymentMethod: PaymentMethod;
   tagId: string;
 }
+
+export interface TransactionFormValues {
+  type: TransactionType;
+  amount: number;
+  description: string;
+  date: string;
+  paymentMethod: PaymentMethod;
+  tagId: string;
+}

@@ -1,18 +1,9 @@
 import { useEffect, useMemo, useState } from 'react';
-import type { Transaction } from '../../types';
+import type { Transaction, TransactionFormValues } from '../../types';
 import { paymentMethodOptions, transactionTypeOptions } from '../../utils/constants';
 import Button from '../ui/Button';
 import Input from '../ui/Input';
 import Select from '../ui/Select';
-
-interface TransactionFormValues {
-  type: 'income' | 'expense';
-  amount: number;
-  description: string;
-  date: string;
-  paymentMethod: 'cash' | 'card' | 'transfer';
-  tagId: string;
-}
 
 interface SelectOption {
   value: string;
@@ -26,16 +17,19 @@ interface TransactionFormProps {
   tagOptions: SelectOption[];
 }
 
-const initialValues: TransactionFormValues = {
+const createInitialValues = (firstTagId: string): TransactionFormValues => ({
   type: 'expense',
   amount: 0,
   description: '',
   date: new Date().toISOString().slice(0, 10),
   paymentMethod: 'cash',
-  tagId: 'alimentacion',
-};
+  tagId: firstTagId,
+});
 
 function TransactionForm({ editingTransaction, onSubmit, onCancelEdit, tagOptions }: TransactionFormProps): JSX.Element {
+  const firstTagId = tagOptions[0]?.value ?? '';
+  const initialValues = useMemo(() => createInitialValues(firstTagId), [firstTagId]);
+
   const [values, setValues] = useState<TransactionFormValues>(initialValues);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
@@ -53,7 +47,7 @@ function TransactionForm({ editingTransaction, onSubmit, onCancelEdit, tagOption
     }
 
     setValues(initialValues);
-  }, [editingTransaction]);
+  }, [editingTransaction, initialValues]);
 
   const title = useMemo(() => (editingTransaction ? 'Editar Movimiento' : 'Agregar Movimiento'), [editingTransaction]);
 
@@ -68,6 +62,9 @@ function TransactionForm({ editingTransaction, onSubmit, onCancelEdit, tagOption
     }
     if (!values.date) {
       nextErrors.date = 'La fecha es obligatoria.';
+    }
+    if (!values.tagId) {
+      nextErrors.tagId = 'Debes seleccionar una etiqueta.';
     }
 
     setErrors(nextErrors);
@@ -92,6 +89,12 @@ function TransactionForm({ editingTransaction, onSubmit, onCancelEdit, tagOption
       <p className="mt-1 text-sm text-app-muted">Formulario para crear y editar movimientos.</p>
 
       <form className="mt-5 space-y-4" onSubmit={handleSubmit}>
+        {tagOptions.length === 0 ? (
+          <div className="rounded-xl border border-dashed border-app-border p-3 text-sm text-app-muted">
+            No hay etiquetas disponibles. Crea una etiqueta desde el modulo de etiquetas para continuar.
+          </div>
+        ) : null}
+
         <div className="grid gap-4 md:grid-cols-2">
           <Select
             label="Tipo"
@@ -142,11 +145,14 @@ function TransactionForm({ editingTransaction, onSubmit, onCancelEdit, tagOption
           label="Etiqueta"
           options={tagOptions}
           value={values.tagId}
+          error={errors.tagId}
           onChange={(event) => setValues((prev) => ({ ...prev, tagId: event.target.value }))}
         />
 
         <div className="flex flex-wrap items-center gap-3 pt-2">
-          <Button type="submit">{editingTransaction ? 'Actualizar Movimiento' : 'Guardar Movimiento'}</Button>
+          <Button type="submit" disabled={tagOptions.length === 0}>
+            {editingTransaction ? 'Actualizar Movimiento' : 'Guardar Movimiento'}
+          </Button>
           <Button
             variant="secondary"
             type="button"

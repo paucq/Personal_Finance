@@ -1,16 +1,7 @@
 import { useCallback } from 'react';
-import type { PaymentMethod, Transaction, TransactionType } from '../types';
+import type { Transaction, TransactionFormValues } from '../types';
 import { STORAGE_KEYS } from '../utils/constants';
 import useLocalStorage from './useLocalStorage';
-
-export interface TransactionFormValues {
-  type: TransactionType;
-  amount: number;
-  description: string;
-  date: string;
-  paymentMethod: PaymentMethod;
-  tagId: string;
-}
 
 const initialTransactions: Transaction[] = [
   {
